@@ -135,6 +135,7 @@ $$p_\theta(\pi|X) = \prod_{t=1}^{T}p_\theta(\pi_t|X,\pi_{1:t-1}).$$
 
 Implementation in **TensorFlow 2**
 
+ 0) **AM-D for VRP Report.ipynb** - demo report notebook
  1) **enviroment.py** - enviroment for VRP RL Agent
  2) **attention_graph_encoder.py** - Graph Attention Encoder
  3) **layers.py** - MHA layers for encoder
