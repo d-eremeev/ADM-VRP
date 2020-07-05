@@ -1,6 +1,6 @@
 # Dynamic Attention Model for Vehicle Routing Problems
 
-### DeepPavlov course: Advanced Topics in Deep Reinforcement learning (http://deeppavlov.ai/rl_course_2020)
+### This repository contains implementation of <a href="https://arxiv.org/abs/2002.03282">A Deep Reinforcement Learning Algorithm Using Dynamic Attention Model for Vehicle Routing Problems</a> article (Tensorflow2). This work was done as a final project for <a href="http://deeppavlov.ai">DeepPavlov </a> course: <a href="http://deeppavlov.ai/rl_course_2020">Advanced Topics in Deep Reinforcement learning </a>. A non-dynamic version (<a href="https://arxiv.org/abs/1803.08475">Attention, Learn to Solve Routing Problems!</a> ) of this algorithm, which was implemented as a part of this project, can be found at <xxx>.
 
 ### Dmitry Eremeev, Alexey Pustynnikov
 
@@ -19,7 +19,7 @@ VRP is an NP-hard problem (Lenstra and Rinnooy Kan, 1981).
 Exact algorithms are only efficient for small problem instances.
 The number of near-optimal algorithms are introduced in academic
 literature. There are multiple professional tools for solving various VRP
-problems (ex. Google OR-Tools).
+problems (ex.  <a href="https://developers.google.com/optimization">Google OR-Tools </a>).
 
 ### Attention Model Aproach
 
@@ -74,20 +74,15 @@ Let's connect current terms with RL language (small dictionary):
 
 #### Model Training:
 
-AM-D is trained by policy gradient using <a href="https://link.springer.com/article/10.1007/BF00992696">REINFORCEt</a> algorithm with baseline.
+AM-D is trained by policy gradient using <a href="https://link.springer.com/article/10.1007/BF00992696">REINFORCE </a> algorithm with baseline.
 
 **Baseline**
 
 - Baseline is a <font color='navy'><b>copy of model</b></font> with fixed weights from one of the preceding epochs.
-- Use warm-up for early epochs: mix exponential moving average (controlled by $\beta=\text{const}$) of model cost over past epochs with baseline model. Warm-up is controlled by $\alpha \in [0; 1]$.
+- Use warm-up for early epochs: mix exponential moving average of model cost over past epochs with baseline model.
 - Update baseline at the end of epoch if the difference in costs for candidate model and baseline is statistically-significant (t-test).
 - Baseline uses separate dataset for this validation. This dataset is updated after each baseline renewal.
 
-**Training**
-
-- Estimate model cost by Monte Carlo: generate an episode $S_1, A_1, \ldots, S_{T}, A_{T}$, following $p_\theta(\cdot | \cdot)$ in sampling mode (stochastic policy). Then loop through all steps to get cost of the whole episode.
-- Evaluate baseline in greedy mode (selects the node with maximum probability - deterministic policy).
-- Estimate gradient according to policy-gradient formula and update weights of the neural network.
 
 **Example**
 
@@ -107,12 +102,8 @@ Implementation in **TensorFlow 2**
  7) **train_model.ipynb** - from this file one can start training or continue training from chechpoint
  8) **utils.py** and **utils_demo.py** - various auxiliary functions for data creation, saving and visualisation
  9) **lkh3_baseline** folder - everything for running LKH algorithm + logs.
- 10) results folder: 
-                    1) folder name ADM_VRP_{graph_size}_{batch_size}
-                    2) there are training logs, learning curves and saved models in each folder 
+ 10) results folder: folder name is ADM_VRP_{graph_size}_{batch_size}. There are training logs, learning curves and saved models in each folder 
  
  # Training procedure:
- 
-  1) For training on large batches (> 128) it may require more than 8 Gb of GPU memory
-  2) Open  **train_model.ipynb** and choose training parameters
-  3) All outputs would be saved in current directory
+  1) Open  **train_model.ipynb** and choose training parameters.
+  2) All outputs would be saved in current directory.
