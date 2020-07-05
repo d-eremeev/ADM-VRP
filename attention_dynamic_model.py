@@ -236,8 +236,8 @@ class AttentionDynamicModel(tf.keras.Model):
 
             if i > 0:
                 state.i = tf.zeros(1, dtype=tf.int64)
-                att_mask = state.get_att_mask()
-                embeddings, context_vectors = self.embedder(inputs, att_mask)
+                att_mask, cur_num_nodes = state.get_att_mask()
+                embeddings, context_vectors = self.embedder(inputs, att_mask, cur_num_nodes)
                 K_tanh, Q_context, K, V = self.get_projections(embeddings, context_vectors)
 
             inner_i = 0
