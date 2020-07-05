@@ -46,6 +46,10 @@ class AgentVRP():
 
         # We dont want to mask depot
         att_mask = tf.squeeze(tf.cast(self.visited, tf.float32), axis=-2)[:, 1:]  # [batch_size, 1, n_nodes] --> [batch_size, n_nodes-1]
+        
+        # Number of nodes in new instance after masking
+        cur_num_nodes = self.n_loc + 1 - tf.reshape(tf.reduce_sum(att_mask, -1), (-1,1))  # [batch_size, 1]
+        
         att_mask = tf.concat((tf.zeros(shape=(att_mask.shape[0],1),dtype=tf.float32),att_mask), axis=-1)
 
         ones_mask = tf.ones_like(att_mask)
@@ -54,7 +58,8 @@ class AgentVRP():
         att_mask = AgentVRP.outer_pr(att_mask, ones_mask) \
                             + AgentVRP.outer_pr(ones_mask, att_mask)\
                             - AgentVRP.outer_pr(att_mask, att_mask)
-        return tf.cast(att_mask, dtype=tf.bool)
+        
+        return tf.cast(att_mask, dtype=tf.bool), cur_num_nodes
 
     def all_finished(self):
         """Checks if all games are finished
@@ -95,6 +100,7 @@ class AgentVRP():
         self.from_depot = self.prev_a == 0
 
         # We have to shift indices by 1 since demand doesn't include depot
+        # 0-index in demand corresponds to the FIRST node
         selected_demand = tf.gather_nd(self.demand,
                                        tf.concat([self.ids, tf.clip_by_value(self.prev_a - 1, 0, self.n_loc - 1)], axis=1)
                                        )[:, None]  # (batch_size, 1)
