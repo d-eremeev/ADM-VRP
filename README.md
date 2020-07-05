@@ -16,7 +16,7 @@ We would consider only particular case of general VRP problem: Capacitated
 Vehicle Routing Problem (CVRP), where the vehicle has a limited carrying
 capacity of the goods that must be delivered.
 
-<img src="pictures/VRP.jpg" width="550"/>
+<img src="pictures/VRP.jpg" width="500"/>
 
 VRP is an NP-hard problem (Lenstra and Rinnooy Kan, 1981). 
 
@@ -90,7 +90,7 @@ AM-D is trained by policy gradient using <a href="https://link.springer.com/arti
 
 **Example**
 
-<img src="pictures/tour_dynamics.gif" width="500"/>
+<img src="pictures/tour_dynamics.gif" width="800"/>
 
 # Files Description:
 
