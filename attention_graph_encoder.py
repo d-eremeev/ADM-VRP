@@ -85,5 +85,9 @@ class GraphAttentionEncoder(tf.keras.layers.Layer):
         for i in range(self.num_layers):
             x = self.mha_layers[i](x, mask)
 
-        output = (x, tf.reduce_mean(x, axis=1))
+        if mask is not None:
+            output = (x, tf.reduce_sum(x, axis=1) / cur_num_nodes)
+        else:
+            output = (x, tf.reduce_mean(x, axis=1))
+            
         return output # (embeds of nodes, avg graph embed)=((batch_size, n_nodes, input), (batch_size, input_dim))
