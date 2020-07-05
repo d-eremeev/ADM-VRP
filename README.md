@@ -21,42 +21,19 @@ The number of near-optimal algorithms are introduced in academic
 literature. There are multiple professional tools for solving various VRP
 problems (ex. Google OR-Tools).
 
-### CVRP: Graph Formulation
-
-- Complete graph:
-
-$$X=(V,E),$$
-
-  with set of nodes
-
-$$V=\left\{x_0 \equiv D,x_1,x_2,\ldots,x_n \right\}.$$
-
-
-- Each node is associated with a demand $d_i$, $d_i < C$, $d_D = 0$.
-
-- Each edge is associated with a cost $c_{ij}$ ($L^2$-norm).
-
-- A vehicle with capacity $C$ is moving along graph starting from depot node $D$. Every non-depot node $x_k$ can be visited only once. It is allowed to return to $D$ arbitrary many times.
-
-- Goal: find a path $\pi=\left\{\pi_1, \ldots,  \pi_T\right\}$, $\pi_t \in V$ that minimizes **total cost**.
 ### Attention Model Aproach
 
 The structural features of the input graph instance are extracted by the encoder.
 Then the solution is constructed incrementally by the decoder. 
 
 Specifically, at each construction step, the decoder predicts a distribution over nodes, then one
-node is selected and appended to the end of the partial solution. Hence,
-corresponding to the parameters $\theta$ and input instance $X$, the probability of
-solution $p_\theta(\pi|X)$ can be decomposed by chain rule as:
-
-$$p_\theta(\pi|X) = \prod_{t=1}^{T}p_\theta(\pi_t|X,\pi_{1:t-1})$$ 
-
-where $T$ is the length of solution. 
+node is selected and appended to the end of the partial solution. 
 
 #### Main ideas:
 
 - Use RL to create agent that can learn heuristics and provide suboptimal solutions.
 - Make use of Graph Attention Networks (GAT) to create appropriate graph embeddings for the agent.
+- Policy of RL agent is governed by decoder.
 
 #### Architecture:
 
@@ -72,30 +49,22 @@ where $T$ is the length of solution.
 
  1) Force RL agent to wait for others once it arrives to $x_0$.
  
- 2) When all are in depots, apply encoder with mask to the whole batch.
+ 2) When every agent is in depot, apply encoder with mask to the whole batch.
  
- 3) Typical solution will be of the form: [17., 3., 4., 7., 2., 16., 0., 0., 0., 0., 15., 20., 5.,
-0., 0., 0., 0., 11., 12., 13., 10., 9., 0., 0., 0., 19.,
-6., 8., 14., 1., 18., 0.]
-
 
 #### Enviroment:
 
-Current enviroment implementation is located in **enviroment.py** file -- <font color='darkorange'> AgentVRP class </font>.
+Current enviroment implementation is located in **enviroment.py** file - <font color='darkorange'> AgentVRP class </font>.
 
 The class contains information about current state and actions that were done by agent.
 
 Main methods:
 
-- **step(action)**: transit to new state according to the action.
+- **step(action)**: transit to a new state according to the action.
 - **get_costs(dataset, pi)**: returns costs for each graph in batch according to the paths in action-state space.
 - **get_mask()**: returns a mask with available actions (allowed nodes).
 - **all_finished()**: checks if all games in batch are finished (all graphes are solved).
 - **partial_finished()**: checks if partial solutions for all graphs has been built, i.e. all agents came back to depot.
-
-*Example*: 
-
-Suppose we have a graph in initial state (*state = AgentVRP(graph_instance)*), i.e. the agent is in the depot (node $x_0$). Then *state.from_depot* is *True*. If the goal is to send the agent to node five, then one can write *state.step([4])* and it's done.
 
 Let's connect current terms with RL language (small dictionary):
 
@@ -105,14 +74,7 @@ Let's connect current terms with RL language (small dictionary):
 
 #### Model Training:
 
-AM-D is trained by policy gradient using <font color='navy'><b>REINFORCE</b></font> algorithm.
-
-$$\nabla_{\theta} J(\theta) \sim \mathbb{E}_p\left[(L^p(X,\pi)-b(X))\nabla_{\theta} \log(p_\theta(\pi|X))\right],$$
-
-where conditional probability of solution is:
-
-$$p_\theta(\pi|X) = \prod_{t=1}^{T}p_\theta(\pi_t|X,\pi_{1:t-1}).$$ 
-
+AM-D is trained by policy gradient using <a href="https://link.springer.com/article/10.1007/BF00992696">REINFORCEt</a> algorithm with baseline.
 
 **Baseline**
 
