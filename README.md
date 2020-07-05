@@ -41,7 +41,7 @@ node is selected and appended to the end of the partial solution.
 
 #### Architecture:
 
-<img src="pictures/nn_architecture_cdr_v2.png" alt="Drawing" style="width: 400px;"/>
+<img src="pictures/nn_architecture_cdr_v2.png" width = "500"/>
 
 
 #### Dynamic Attention Model (AM-D) Approach:
