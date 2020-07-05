@@ -1,8 +1,9 @@
 # Dynamic Attention Model for Vehicle Routing Problems
-
-### This repository contains implementation of <a href="https://arxiv.org/abs/2002.03282">A Deep Reinforcement Learning Algorithm Using Dynamic Attention Model for Vehicle Routing Problems</a> article (Tensorflow2). This work was done as a final project for <a href="http://deeppavlov.ai">DeepPavlov </a> course: <a href="http://deeppavlov.ai/rl_course_2020">Advanced Topics in Deep Reinforcement learning </a>. A non-dynamic version (<a href="https://arxiv.org/abs/1803.08475">Attention, Learn to Solve Routing Problems!</a> ) of this algorithm, which was implemented as a part of this project, can be found at <xxx>.
-
 ### Dmitry Eremeev, Alexey Pustynnikov
+
+### This repository contains implementation of <a href="https://arxiv.org/abs/2002.03282">A Deep Reinforcement Learning Algorithm Using Dynamic Attention Model for Vehicle Routing Problems</a> article (TensorFlow2). 
+
+This work was done as a final project for <a href="http://deeppavlov.ai">DeepPavlov </a> course: <a href="http://deeppavlov.ai/rl_course_2020">Advanced Topics in Deep Reinforcement learning </a>. A non-dynamic version (<a href="https://arxiv.org/abs/1803.08475">Attention, Learn to Solve Routing Problems!</a> ) of this algorithm, which was implemented as a part of this project, can be found at <xxx>.
 
 One of the most important applications of combinatorial optimization is vehicle routing problem, in
 which the goal is to find the best routes for a fleet of vehicles visiting a set of
