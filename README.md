@@ -90,7 +90,7 @@ AM-D is trained by policy gradient using <a href="https://link.springer.com/arti
 
 **Example**
 
-<img src="pictures/tour_dynamics.gif" width="800"/>
+<img src="pictures/tour_dynamics.gif" width="750"/>
 
 # Files Description:
 
