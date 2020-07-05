@@ -16,7 +16,7 @@ We would consider only particular case of general VRP problem: Capacitated
 Vehicle Routing Problem (CVRP), where the vehicle has a limited carrying
 capacity of the goods that must be delivered.
 
-<img src="pictures/VRP.jpg" style="width: 5px;"/>
+<img src="pictures/VRP.jpg" style="width: 5px; height: 5px;"/>
 
 VRP is an NP-hard problem (Lenstra and Rinnooy Kan, 1981). 
 
