@@ -1,7 +1,8 @@
 # Dynamic Attention Model for Vehicle Routing Problems
-### Dmitry Eremeev, Alexey Pustynnikov
 
 ### This repository contains implementation of <a href="https://arxiv.org/abs/2002.03282">"A Deep Reinforcement Learning Algorithm Using Dynamic Attention Model for Vehicle Routing Problems"</a> article (TensorFlow2). 
+
+### <a href="https://github.com/d-eremeev/">Dmitry Eremeev</a>, <a href="https://github.com/alexeypustynnikov">Alexey Pustynnikov</a>
 
 This work was done as a final project for <a href="http://deeppavlov.ai">DeepPavlov </a> course: <a href="http://deeppavlov.ai/rl_course_2020">Advanced Topics in Deep Reinforcement learning </a>. A non-dynamic version (<a href="https://arxiv.org/abs/1803.08475">Attention, Learn to Solve Routing Problems!</a> ) of this algorithm, which was implemented as a part of this project, can be found at <xxx>.
  
@@ -70,7 +71,7 @@ Main methods:
 - **all_finished()**: checks if all games in batch are finished (all graphes are solved).
 - **partial_finished()**: checks if partial solutions for all graphs has been built, i.e. all agents came back to depot.
 
-Let's connect current terms with RL language (small dictionary):
+Connection with RL language:
 
 - **State**: $X$ - graph instance (coordinates, demands, etc.) together with information in which node agent is located.
 - **Action**: $\pi_t$ - decision in which node agent should go.
