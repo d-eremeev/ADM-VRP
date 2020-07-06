@@ -99,11 +99,11 @@ Implementation in **TensorFlow 2**
 
  0) **AM-D for VRP Report.ipynb** - demo report notebook
  1) **enviroment.py** - enviroment for VRP RL Agent
- 2) **attention_graph_encoder.py** - Graph Attention Encoder
- 3) **layers.py** - MHA layers for encoder
+ 2) **layers.py** - MHA layers for encoder
+ 3) **attention_graph_encoder.py** - Graph Attention Encoder
  4) **reinforce_baseline.py** - class for REINFORCE baseline
  5) **attention_dynamic_model.py** - main model and decoder
- 6) **train.py** - defines training loop, that we use in train_model.ipynb
+ 6) **train.py** - defines training loop which we use in train_model.ipynb
  7) **train_model.ipynb** - from this file one can start training or continue training from chechpoint
  8) **utils.py** and **utils_demo.py** - various auxiliary functions for data creation, saving and visualisation
  9) **lkh3_baseline** folder - everything for running LKH algorithm + logs.
