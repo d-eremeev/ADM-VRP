@@ -4,7 +4,7 @@
 
 ### <a href="https://github.com/d-eremeev/">Dmitry Eremeev</a>, <a href="https://github.com/alexeypustynnikov">Alexey Pustynnikov</a>
 
-This work was done as a final project for <a href="http://deeppavlov.ai">DeepPavlov </a> course: <a href="http://deeppavlov.ai/rl_course_2020">Advanced Topics in Deep Reinforcement learning </a>. A non-dynamic version (<a href="https://arxiv.org/abs/1803.08475">Attention, Learn to Solve Routing Problems!</a> ) of this algorithm, which was implemented as a part of this project, can be found at <xxx>.
+This work was done as a final project for <a href="http://deeppavlov.ai">DeepPavlov </a> course: <a href="http://deeppavlov.ai/rl_course_2020">Advanced Topics in Deep Reinforcement learning </a>. A non-dynamic version (<a href="https://arxiv.org/abs/1803.08475">Attention, Learn to Solve Routing Problems!</a> ) of this algorithm, which was implemented as a part of this project, can be found at https://github.com/alexeypustynnikov/AM-VRP.
  
 <hr style="width:50%;text-align:left;margin-left:0">
 
