@@ -9,7 +9,7 @@ This work was done as a final project for <a href="http://deeppavlov.ai">DeepPav
 <hr style="width:50%;text-align:left;margin-left:0">
 
 
-One of the most important applications of combinatorial optimization is vehicle routing problem, in
+One of the important applications of combinatorial optimization is vehicle routing problem, in
 which the goal is to find the best routes for a fleet of vehicles visiting a set of
 locations. Usually, "best" means routes with the least total distance or cost.
 
