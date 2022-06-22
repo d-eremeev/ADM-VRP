@@ -1,4 +1,4 @@
-numpy==1.17.2
+numpy==1.22.0
 pandas==0.25.3
 plotly==4.5.2
 seaborn==0.10.0
